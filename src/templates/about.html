@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>About page</h1>
+{{request.user}}
+<p>This is a template</p>
+
+<div class="container">
+    <h2>Basic Table</h2>
+    <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>            
+    <table class="table">
+      <thead>
+        <tr>
+          {% for item in header_table %}
+          <th>{{item}}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in data %}
+        <tr>
+            {% for value in item %}
+            <td>{{value}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+
+<p>{{my_text|capfirst|upper}},{{my_number}}</p>
+
+<ul>
+    {% for my_sub_item in my_list %}
+    {% if my_sub_item == 3 %}
+    <li>It is {{my_sub_item}} !!!</li>
+    {% else %}
+    <li>{{my_sub_item}}</li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+
+
+
+
+{% endblock content %}

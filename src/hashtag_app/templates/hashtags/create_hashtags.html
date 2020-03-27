@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>Introduce the users separated by whitespaces</p>
+
+
+<form action='.' method='POST'>{% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit' value='Save' />
+</form>
+
+
+
+
+{% endblock %}

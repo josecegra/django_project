@@ -1,0 +1,19 @@
+C:/Users/JoseEduardo/Desktop/django_project/venv/Scripts/activate
+
+django-admin startproject trydjango .
+
+python manage.py runserver
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py createsuperuser
+
+Username: josecegra
+password: phys6164
+
+
+python manage.py startapp products
+
+

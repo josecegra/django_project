@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<a class="btn btn-primary" href="/hashtags">Try again</a>
+
+<div class="container">
+    <h2>Basic Table</h2>
+    <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>            
+    <table class="table">
+      <thead>
+        <tr>
+          {% for item in header_table %}
+          <th>{{item}}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in df_values %}
+        <tr>
+            {% for value in item %}
+            <td>{{value}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+
+{% endblock %}
