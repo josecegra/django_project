@@ -2,6 +2,11 @@
 
 {% block content %}
 
-<img src='{{instance.image.url}}' class='img-responsive' />
+<a class="btn btn-primary" href="/image">Try again</a>
+
+
+{% if instance.image %}
+<img src='{{instance.image.url}}' />
+{% endif %}
 
 {% endblock content %}

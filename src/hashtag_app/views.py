@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 
-from .forms import HashtagForm
+from .forms import HashtagForm, ImageForm
 
 from django.http import HttpResponse, HttpResponseRedirect
+
+from .models import Image
 
 
 from .apps import HashtagAppConfig, get_hashtags
@@ -11,22 +13,23 @@ from .apps import HashtagAppConfig, get_hashtags
 
 
 def upload_view(request, *args,**kwargs):
-    form = HashtagForm(request.POST or None, request.FILES or None)
-    instance = form.instance
-    print(request.POST)
-    print(request.FILES)
 
+    if request.method == 'POST':
 
-    if form.is_valid():
-        print("hey")
-        instance = form.save(commit=False)
+        img = ImageForm(request.POST, request.FILES)
+        instance = img.save(commit = False)
         instance.save()
-        context = {"instance":instance,"form":form}
+
+        #img = Image.objects.all()
+   
+        context = {"instance":instance}
         #redirect
         return render(request, "hashtags/display_image.html", context)
+    else:
+        img = ImageForm(request.POST, request.FILES)
 
 
-    context = {"instance":instance,"form":form}
+    context = {"img":img}
     return render(request, "hashtags/upload.html", context)
 
 def result_view(request):

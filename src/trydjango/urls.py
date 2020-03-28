@@ -30,4 +30,4 @@ urlpatterns = [
     path('image/',upload_view),
     path('hashtags/',hashtag_create_view),
     path('admin/', admin.site.urls),
-] 
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
