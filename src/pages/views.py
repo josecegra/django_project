@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+
 def result_view(request):
     return 
 
@@ -21,5 +22,18 @@ def about_view(request, *args,**kwargs):
         }
     return render(request, "about.html", my_context)
 
-def contact_view(request, *args,**kwargs):
-    return render(request, "contact.html", {})
+def upload_view(request, *args,**kwargs):
+
+    #form = Hashta
+
+    if request.method == 'POST':
+        uploaded_file = request.FILES['document']
+
+        print(request.FILES)
+        print(uploaded_file)
+
+        #print(uploaded_file.name)
+
+
+
+    return render(request, "upload.html", {})

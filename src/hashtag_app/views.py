@@ -2,9 +2,32 @@ from django.shortcuts import render, redirect
 
 from .forms import HashtagForm
 
+from django.http import HttpResponse, HttpResponseRedirect
+
+
 from .apps import HashtagAppConfig, get_hashtags
 
 # Create your views here.
+
+
+def upload_view(request, *args,**kwargs):
+    form = HashtagForm(request.POST or None, request.FILES or None)
+    instance = form.instance
+    print(request.POST)
+    print(request.FILES)
+
+
+    if form.is_valid():
+        print("hey")
+        instance = form.save(commit=False)
+        instance.save()
+        context = {"instance":instance,"form":form}
+        #redirect
+        return render(request, "hashtags/display_image.html", context)
+
+
+    context = {"instance":instance,"form":form}
+    return render(request, "hashtags/upload.html", context)
 
 def result_view(request):
 
@@ -44,28 +67,7 @@ def hashtag_create_view(request):
     }
     return render(request, "hashtags/create_hashtags.html", context)
 
-# def hashtag_create_view(request):
 
-#     form = HashtagForm(request.POST or None)
-#     if form.is_valid():
-#         form.save()
-#         #form = HashtagForm()
-#         input_text = form.cleaned_data['input_text']
-#         print(input_text)
-#         print(get_hashtags(input_text))
-
-        
-#         #print(HashtagAppConfig.message)
-
-
-#     context = {
-#         'form': form
-#     }
-#     return render(request, "hashtags/create_hashtags.html", context)
-
-#def hashtag_view(request, *args,**kwargs):
-#    context = {"form":form}
-#    return render(request, "home.html", {})
 
 
     
