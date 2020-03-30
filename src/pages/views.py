@@ -3,13 +3,16 @@ from django.shortcuts import render
 
 
 def result_view(request):
-    return 
+    return render(request, "pages/home.html", {})
+
+def about(request):
+    return render(request, "pages/about.html", {})
 
 # Create your views here.
 def home_view(request, *args,**kwargs):
     print(request.user)
     #return HttpResponse("<h1>Hello world<h1>")
-    return render(request, "home.html", {})
+    return render(request, "pages/home.html", {})
 
 def about_view(request, *args,**kwargs):
     my_context = {
