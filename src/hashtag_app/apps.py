@@ -108,7 +108,6 @@ def get_common_hashtag_df(unique_hashtag_list, hashtag_dict_list, total_hashtag_
 
 def get_hashtags(input_text):
     
-    api = InstagramAPI("eduphys", "phys6164")
     api.login()
 
     profile_list = input_text.split()
